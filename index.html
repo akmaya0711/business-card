@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif;
+      background-color: #f4f5f7;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card-container {
+      background: #ffffff;
+      max-width: 480px;
+      width: 100%;
+      padding: 28px 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    .title {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .tab-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      background: #f0f2f5;
+      padding: 6px;
+      border-radius: 12px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: #666;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #111;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .card-view {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      background: #fafafa;
+      line-height: 0;
+    }
+    .card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+    .action-area {
+      margin-top: 24px;
+    }
+    .download-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 13px 0;
+      background-color: #24292f;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+    .download-btn:hover {
+      background-color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="title">Business Card</div>
+
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchCard('ko')">국문 명함</button>
+      <button class="tab-btn" onclick="switchCard('en')">English</button>
+    </div>
+
+    <div class="card-view">
+      <img id="cardImage" class="card-img" src="name_card_korean.jpg" alt="명함">
+    </div>
+
+    <div class="action-area">
+      <a id="downloadLink" class="download-btn" href="name_card_korean.jpg" download>명함 파일 저장하기</a>
+    </div>
+  </div>
+
+  <script>
+    function switchCard(lang) {
+      const img = document.getElementById('cardImage');
+      const downloadLink = document.getElementById('downloadLink');
+      const buttons = document.querySelectorAll('.tab-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      if (lang === 'ko') {
+        buttons[0].classList.add('active');
+        img.src = 'name_card_korean.jpg';
+        downloadLink.href = 'name_card_korean.jpg';
+        downloadLink.textContent = '명함 파일 저장하기';
+      } else {
+        buttons[1].classList.add('active');
+        img.src = 'name_card_english.jpg';
+        downloadLink.href = 'name_card_english.jpg';
+        downloadLink.textContent = 'Save English Card';
+      }
+    }
+  </script>
+
+</body>
+</html>
