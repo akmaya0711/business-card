@@ -84,11 +84,24 @@
       text-align: left;
       margin-bottom: 18px;
     }
+    /* 이름과 로고를 나란히 정렬 */
+    .name-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
     .info-name {
       font-size: 20px;
       font-weight: 700;
       color: #0f172a;
-      margin-bottom: 4px;
+      letter-spacing: -0.3px;
+    }
+    .name-logo {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
     }
     .info-affiliation {
       font-size: 14px;
@@ -184,7 +197,10 @@
 
     <!-- 텍스트 정보 영역 -->
     <div class="info-box">
-      <div id="personName" class="info-name">맹 영 재</div>
+      <div class="name-header">
+        <div id="personName" class="info-name">맹 영 재</div>
+        <img class="name-logo" src="logo.jpg" alt="Samsung Financial Networks">
+      </div>
       <div id="personAffiliation" class="info-affiliation">삼성증권 리서치SA팀</div>
       <div id="personTitle" class="info-title">수석</div>
       
@@ -266,10 +282,7 @@
         buttons[1].classList.add('active');
       }
 
-      // 이미지 변경
       document.getElementById('cardImage').src = data.imageSrc;
-
-      // 텍스트 정보 변경
       document.getElementById('personName').textContent = data.name;
       document.getElementById('personAffiliation').textContent = data.affiliation;
       document.getElementById('personTitle').textContent = data.title;
@@ -288,7 +301,6 @@
 
       document.getElementById('addressText').textContent = data.address;
 
-      // 액션 버튼 링크 및 문구 변경
       document.getElementById('callBtn').href = 'tel:' + data.mobileRaw;
       document.getElementById('callLabel').textContent = data.callText;
 
