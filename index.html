@@ -13,45 +13,40 @@
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif;
-      /* 깊이감 있는 딥 네이비 오로라 그라데이션 배경 */
-      background: radial-gradient(circle at 50% 10%, #1e293b 0%, #0a0f1d 100%);
-      color: #f8fafc;
+      background-color: #f1f5f9;
+      color: #0f172a;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 24px 16px;
     }
-    /* 글래스모피즘 반투명 카드 컨테이너 */
     .card-container {
-      background: rgba(30, 41, 59, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #ffffff;
       max-width: 440px;
       width: 100%;
-      padding: 26px 20px;
-      border-radius: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+      padding: 28px 22px;
+      border-radius: 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
       text-align: center;
     }
     .brand-title {
       font-size: 13px;
       letter-spacing: 2px;
-      color: #94a3b8;
+      color: #475569;
       text-transform: uppercase;
       margin-bottom: 18px;
       font-weight: 700;
     }
-    /* 상단 언어 전환 탭 */
     .tab-buttons {
       display: flex;
       gap: 6px;
       margin-bottom: 20px;
-      background: rgba(15, 23, 42, 0.6);
+      background: #f8fafc;
       padding: 5px;
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid #e2e8f0;
     }
     .tab-btn {
       flex: 1;
@@ -59,19 +54,17 @@
       border: none;
       border-radius: 10px;
       background: transparent;
-      color: #94a3b8;
+      color: #64748b;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
     }
     .tab-btn.active {
       background: #0284c7;
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
     }
-
-    /* 3D 플립 카드 영역 */
     .card-flip-wrap {
       perspective: 1200px;
       width: 100%;
@@ -83,7 +76,7 @@
       transform-style: preserve-3d;
       transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
       border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
     }
     .card-flipper.flipped {
       transform: rotateY(180deg);
@@ -96,6 +89,7 @@
       -webkit-backface-visibility: hidden;
       line-height: 0;
       background: #ffffff;
+      border: 1px solid #e2e8f0;
     }
     .card-face.back {
       position: absolute;
@@ -108,11 +102,9 @@
       height: auto;
       display: block;
     }
-
-    /* 정보 박스 */
     .info-box {
-      background: rgba(15, 23, 42, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
       border-radius: 18px;
       padding: 20px 18px;
       text-align: left;
@@ -127,60 +119,59 @@
     }
     .info-name {
       font-size: 22px;
-      font-weight: 700;
-      color: #ffffff;
+      font-weight: 800;
+      color: #0f172a;
       letter-spacing: -0.3px;
     }
-    /* 로고 크기 및 블렌딩 */
     .name-logo {
       height: 60px;
       max-width: 50%;
       width: auto;
       object-fit: contain;
-      mix-blend-mode: screen; /* 다크 모드에 맞춘 스마트 발색 */
+      mix-blend-mode: multiply;
       display: block;
     }
     .info-affiliation {
-      font-size: 14px;
-      font-weight: 600;
-      color: #38bdf8;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0369a1;
       margin-bottom: 2px;
     }
     .info-title {
       font-size: 13px;
-      color: #94a3b8;
+      font-weight: 600;
+      color: #475569;
       margin-bottom: 16px;
     }
     .info-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 9px 0;
+      padding: 10px 0;
       font-size: 13px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px dashed #cbd5e1;
     }
     .info-label {
       color: #64748b;
-      font-weight: 500;
+      font-weight: 600;
       min-width: 60px;
     }
     .info-value {
-      color: #e2e8f0;
-      font-weight: 600;
+      color: #0f172a;
+      font-weight: 700;
       text-decoration: none;
       text-align: right;
       word-break: break-all;
     }
     .address-box {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px dashed #cbd5e1;
       padding-top: 10px;
       margin-top: 2px;
       font-size: 12px;
-      color: #94a3b8;
+      color: #475569;
       line-height: 1.5;
+      font-weight: 500;
     }
-
-    /* 액션 버튼 그룹 */
     .btn-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -195,7 +186,7 @@
       padding: 13px 0;
       border-radius: 12px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       border: none;
@@ -206,27 +197,30 @@
       opacity: 0.9;
     }
     .btn-call {
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      background-color: #0284c7;
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
     }
     .btn-email {
-      background: rgba(255, 255, 255, 0.08);
+      background-color: #0f172a;
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
     }
     .btn-profile {
       width: 100%;
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #ffffff;
+      color: #0f172a;
+      border: 1.5px solid #0f172a;
       margin-bottom: 10px;
+    }
+    .btn-profile:hover {
+      background-color: #f8fafc;
     }
     .btn-download {
       width: 100%;
-      background: transparent;
-      color: #94a3b8;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #f8fafc;
+      color: #475569;
+      border: 1px solid #cbd5e1;
       font-size: 13px;
     }
     .icon {
@@ -241,13 +235,11 @@
   <div class="card-container">
     <div class="brand-title">Samsung Securities</div>
 
-    <!-- 언어 전환 탭 -->
     <div class="tab-buttons">
       <button class="tab-btn active" id="btnKo" onclick="setCard('ko')">국문 명함</button>
       <button class="tab-btn" id="btnEn" onclick="setCard('en')">English</button>
     </div>
 
-    <!-- 3D 플립 카드 영역 -->
     <div class="card-flip-wrap">
       <div class="card-flipper" id="cardFlipper">
         <div class="card-face front">
@@ -259,7 +251,6 @@
       </div>
     </div>
 
-    <!-- 텍스트 정보 영역 -->
     <div class="info-box">
       <div class="name-header">
         <div id="personName" class="info-name">맹 영 재</div>
@@ -285,7 +276,6 @@
       </div>
     </div>
 
-    <!-- 스마트 원터치 실행 버튼 -->
     <div class="btn-group">
       <a id="callBtn" class="btn btn-call" href="tel:01090890198">
         <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -297,13 +287,11 @@
       </a>
     </div>
 
-    <!-- 프로필 소개 보기 버튼 -->
     <a id="profileBtn" class="btn btn-profile" href="https://akmaya0711.github.io/profile/">
       <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
       <span id="profileLabel">프로필 소개 보기</span>
     </a>
 
-    <!-- 명함 다운로드 버튼 -->
     <a id="downloadBtn" class="btn btn-download" href="name_card_korean.jpg" download>
       <svg class="icon" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
       <span id="downloadLabel">명함 이미지 저장</span>
