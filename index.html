@@ -89,7 +89,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .info-name {
       font-size: 21px;
@@ -97,9 +97,10 @@
       color: #0f172a;
       letter-spacing: -0.3px;
     }
-    /* 로고 크기 확대 및 흰 배경 100% 투명 처리 */
+    /* 로고 크기 2배 확대 (76px) 및 비율 유지 */
     .name-logo {
-      height: 38px;
+      height: 76px;
+      max-width: 55%;
       width: auto;
       object-fit: contain;
       mix-blend-mode: multiply;
@@ -197,7 +198,6 @@
       <img id="cardImage" class="card-img" src="name_card_korean.jpg" alt="명함 이미지">
     </div>
 
-    <!-- 텍스트 정보 영역 -->
     <div class="info-box">
       <div class="name-header">
         <div id="personName" class="info-name">맹 영 재</div>
@@ -223,7 +223,6 @@
       </div>
     </div>
 
-    <!-- 원터치 실행 버튼 -->
     <div class="btn-group">
       <a id="callBtn" class="btn btn-call" href="tel:01090890198">
         📞 <span id="callLabel">휴대전화 통화</span>
