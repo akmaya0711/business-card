@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Card</title>
+  <title>MAENG YOUNGJAE - Digital Business Card</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,46 +12,46 @@
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", Roboto, sans-serif;
-      background-color: #f4f5f7;
-      color: #333;
+      background-color: #f1f5f9;
+      color: #1e293b;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px 16px;
     }
     .card-container {
       background: #ffffff;
-      max-width: 480px;
+      max-width: 440px;
       width: 100%;
-      padding: 28px 24px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 24px 20px;
+      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
-    .title {
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #888;
+    .brand-title {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: #64748b;
       text-transform: uppercase;
-      margin-bottom: 20px;
-      font-weight: 600;
+      margin-bottom: 16px;
+      font-weight: 700;
     }
     .tab-buttons {
       display: flex;
-      gap: 10px;
-      margin-bottom: 22px;
-      background: #f0f2f5;
-      padding: 6px;
-      border-radius: 12px;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 14px;
     }
     .tab-btn {
       flex: 1;
       padding: 10px 0;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: transparent;
-      color: #666;
+      color: #64748b;
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
@@ -59,47 +59,119 @@
     }
     .tab-btn.active {
       background: #ffffff;
-      color: #111;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      color: #0f172a;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     }
     .card-view {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
       background: #fafafa;
       line-height: 0;
+      margin-bottom: 20px;
     }
     .card-img {
       width: 100%;
       height: auto;
       display: block;
+    }
+    .info-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+    .info-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .info-affiliation {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0284c7;
+      margin-bottom: 2px;
+    }
+    .info-title {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 14px;
+    }
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 13px;
+      border-top: 1px dashed #e2e8f0;
+    }
+    .info-label {
+      color: #94a3b8;
+      font-weight: 500;
+      min-width: 60px;
+    }
+    .info-value {
+      color: #1e293b;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: right;
+      word-break: break-all;
+    }
+    .address-box {
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 8px;
+      margin-top: 2px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 0;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
       transition: opacity 0.2s ease;
     }
-    .action-area {
-      margin-top: 24px;
-    }
-    .download-btn {
-      display: inline-block;
-      width: 100%;
-      padding: 13px 0;
-      background-color: #24292f;
+    .btn-call {
+      background-color: #0284c7;
       color: #ffffff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.2s ease;
     }
-    .download-btn:hover {
-      background-color: #000000;
+    .btn-email {
+      background-color: #1e293b;
+      color: #ffffff;
+    }
+    .btn-download {
+      width: 100%;
+      background-color: #ffffff;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .btn:active {
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
   <div class="card-container">
-    <div class="title">Business Card</div>
+    <div class="brand-title">Samsung Securities</div>
 
     <div class="tab-buttons">
       <button class="tab-btn active" onclick="switchCard('ko')">국문 명함</button>
@@ -107,33 +179,125 @@
     </div>
 
     <div class="card-view">
-      <img id="cardImage" class="card-img" src="name_card_korean.jpg" alt="명함">
+      <img id="cardImage" class="card-img" src="name_card_korean.jpg" alt="명함 이미지">
     </div>
 
-    <div class="action-area">
-      <a id="downloadLink" class="download-btn" href="name_card_korean.jpg" download>명함 파일 저장하기</a>
+    <!-- 텍스트 정보 영역 -->
+    <div class="info-box">
+      <div id="personName" class="info-name">맹 영 재</div>
+      <div id="personAffiliation" class="info-affiliation">삼성증권 리서치SA팀</div>
+      <div id="personTitle" class="info-title">수석</div>
+      
+      <div class="info-item">
+        <span class="info-label">Mobile</span>
+        <a id="phoneMobile" class="info-value" href="tel:01090890198">010.9089.0198</a>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Office</span>
+        <a id="phoneOffice" class="info-value" href="tel:0220207055">02.2020.7055</a>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Email</span>
+        <a id="emailText" class="info-value" href="mailto:akmaya@samsung.com">akmaya@samsung.com</a>
+      </div>
+      <div class="address-box" id="addressText">
+        서울특별시 서초구 서초대로 74길 11 (서초동, 삼성전자빌딩) 10층
+      </div>
     </div>
+
+    <!-- 원터치 실행 버튼 -->
+    <div class="btn-group">
+      <a id="callBtn" class="btn btn-call" href="tel:01090890198">
+        📞 <span id="callLabel">휴대전화 통화</span>
+      </a>
+      <a id="emailBtn" class="btn btn-email" href="mailto:akmaya@samsung.com">
+        ✉️ <span id="emailLabel">이메일 작성</span>
+      </a>
+    </div>
+
+    <a id="downloadBtn" class="btn btn-download" href="name_card_korean.jpg" download>
+      💾 <span id="downloadLabel">명함 이미지 저장</span>
+    </a>
   </div>
 
   <script>
+    const profile = {
+      ko: {
+        name: "맹 영 재",
+        affiliation: "삼성증권 리서치SA팀",
+        title: "수석",
+        mobile: "010.9089.0198",
+        mobileRaw: "01090890198",
+        office: "02.2020.7055",
+        officeRaw: "0220207055",
+        email: "akmaya@samsung.com",
+        address: "06620 서울특별시 서초구 서초대로 74길 11 (서초동, 삼성전자빌딩) 10층",
+        callText: "휴대전화 통화",
+        emailText: "이메일 작성",
+        downloadText: "국문 명함 저장",
+        imageSrc: "name_card_korean.jpg"
+      },
+      en: {
+        name: "MAENG YOUNGJAE",
+        affiliation: "Samsung Securities",
+        title: "Supervisory Analyst / Research Supervisory Analyst Team",
+        mobile: "+82.10.9089.0198",
+        mobileRaw: "+821090890198",
+        office: "+82.2.2020.7055",
+        officeRaw: "+82220207055",
+        email: "akmaya@samsung.com",
+        address: "10th fl., Samsung Electronics Bldg., 11, Seocho-daero 74-gil, Seocho-gu Seoul 06620, KOREA",
+        callText: "Call Mobile",
+        emailText: "Send Email",
+        downloadText: "Save Card Image",
+        imageSrc: "name_card_english.jpg"
+      }
+    };
+
     function switchCard(lang) {
-      const img = document.getElementById('cardImage');
-      const downloadLink = document.getElementById('downloadLink');
+      const data = profile[lang];
       const buttons = document.querySelectorAll('.tab-btn');
 
       buttons.forEach(btn => btn.classList.remove('active'));
 
       if (lang === 'ko') {
         buttons[0].classList.add('active');
-        img.src = 'name_card_korean.jpg';
-        downloadLink.href = 'name_card_korean.jpg';
-        downloadLink.textContent = '명함 파일 저장하기';
       } else {
         buttons[1].classList.add('active');
-        img.src = 'name_card_english.jpg';
-        downloadLink.href = 'name_card_english.jpg';
-        downloadLink.textContent = 'Save English Card';
       }
+
+      // 이미지 변경
+      document.getElementById('cardImage').src = data.imageSrc;
+
+      // 텍스트 정보 변경
+      document.getElementById('personName').textContent = data.name;
+      document.getElementById('personAffiliation').textContent = data.affiliation;
+      document.getElementById('personTitle').textContent = data.title;
+      
+      const mobileElem = document.getElementById('phoneMobile');
+      mobileElem.textContent = data.mobile;
+      mobileElem.href = 'tel:' + data.mobileRaw;
+
+      const officeElem = document.getElementById('phoneOffice');
+      officeElem.textContent = data.office;
+      officeElem.href = 'tel:' + data.officeRaw;
+
+      const emailElem = document.getElementById('emailText');
+      emailElem.textContent = data.email;
+      emailElem.href = 'mailto:' + data.email;
+
+      document.getElementById('addressText').textContent = data.address;
+
+      // 액션 버튼 링크 및 문구 변경
+      document.getElementById('callBtn').href = 'tel:' + data.mobileRaw;
+      document.getElementById('callLabel').textContent = data.callText;
+
+      document.getElementById('emailBtn').href = 'mailto:' + data.email;
+      document.getElementById('emailLabel').textContent = data.emailText;
+
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.href = data.imageSrc;
+      document.getElementById('downloadLabel').textContent = data.downloadText;
     }
   </script>
 
