@@ -172,20 +172,21 @@
       background-color: #1e293b;
       color: #ffffff;
     }
+    .btn-profile {
+      width: 100%;
+      background-color: #0f172a;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .btn-profile:hover {
+      background-color: #1e293b;
+    }
     .btn-download {
       width: 100%;
       background-color: #ffffff;
       color: #475569;
       border: 1px solid #cbd5e1;
-      margin-bottom: 10px;
-    }
-    .btn-profile {
-      width: 100%;
-      background-color: #0f172a;
-      color: #ffffff;
-    }
-    .btn-profile:hover {
-      background-color: #1e293b;
+      margin-bottom: 0;
     }
     .btn:active {
       opacity: 0.8;
@@ -240,13 +241,14 @@
       </a>
     </div>
 
-    <a id="downloadBtn" class="btn btn-download" href="name_card_korean.jpg" download>
-      💾 <span id="downloadLabel">명함 이미지 저장</span>
-    </a>
-
-    <!-- 프로필 페이지 바로가기 버튼 -->
+    <!-- 프로필 소개 보기 버튼 -->
     <a id="profileBtn" class="btn btn-profile" href="https://akmaya0711.github.io/profile/">
       👤 <span id="profileLabel">프로필 소개 보기</span>
+    </a>
+
+    <!-- 명함 이미지 저장 버튼 (맨 아래) -->
+    <a id="downloadBtn" class="btn btn-download" href="name_card_korean.jpg" download>
+      💾 <span id="downloadLabel">명함 이미지 저장</span>
     </a>
   </div>
 
@@ -264,8 +266,8 @@
         address: "06620 서울특별시 서초구 서초대로 74길 11 (서초동, 삼성전자빌딩) 10층",
         callText: "휴대전화 통화",
         emailText: "이메일 작성",
-        downloadText: "국문 명함 저장",
         profileText: "프로필 소개 보기",
+        downloadText: "국문 명함 저장",
         imageSrc: "name_card_korean.jpg"
       },
       en: {
@@ -280,8 +282,8 @@
         address: "10th fl., Samsung Electronics Bldg., 11, Seocho-daero 74-gil, Seocho-gu Seoul 06620, KOREA",
         callText: "Call Mobile",
         emailText: "Send Email",
-        downloadText: "Save Card Image",
         profileText: "View Profile",
+        downloadText: "Save Card Image",
         imageSrc: "name_card_english.jpg"
       }
     };
@@ -323,11 +325,11 @@
       document.getElementById('emailBtn').href = 'mailto:' + data.email;
       document.getElementById('emailLabel').textContent = data.emailText;
 
+      document.getElementById('profileLabel').textContent = data.profileText;
+
       const downloadBtn = document.getElementById('downloadBtn');
       downloadBtn.href = data.imageSrc;
       document.getElementById('downloadLabel').textContent = data.downloadText;
-
-      document.getElementById('profileLabel').textContent = data.profileText;
     }
   </script>
 
