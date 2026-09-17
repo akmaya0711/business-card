@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 1번: 검색 로봇 및 크롤러 수집 차단 -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <title>MAENG YOUNGJAE - Digital Business Card</title>
   <style>
     * {
@@ -163,6 +165,29 @@
       text-align: right;
       word-break: break-all;
     }
+
+    /* 휴대전화 보호 전용 레이아웃 */
+    .secure-mobile-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-reveal {
+      background-color: #e0f2fe;
+      color: #0284c7;
+      border: 1px solid #bae6fd;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-reveal:active {
+      transform: scale(0.95);
+      background-color: #bae6fd;
+    }
+
     .address-box {
       border-top: 1px dashed #cbd5e1;
       padding-top: 10px;
@@ -259,10 +284,15 @@
       <div id="personAffiliation" class="info-affiliation">삼성증권 리서치SA팀</div>
       <div id="personTitle" class="info-title">수석</div>
       
+      <!-- 휴대전화: 마스킹 및 보안 처리 -->
       <div class="info-item">
         <span class="info-label">Mobile</span>
-        <a id="phoneMobile" class="info-value" href="tel:01090890198">010.9089.0198</a>
+        <div class="secure-mobile-wrap">
+          <span id="phoneMobile" class="info-value">010.••••.0198</span>
+          <button type="button" id="revealBtn" class="btn-reveal" onclick="revealMobile()">보기</button>
+        </div>
       </div>
+
       <div class="info-item">
         <span class="info-label">Office</span>
         <a id="phoneOffice" class="info-value" href="tel:0220207055">02.2020.7055</a>
@@ -277,7 +307,8 @@
     </div>
 
     <div class="btn-group">
-      <a id="callBtn" class="btn btn-call" href="tel:01090890198">
+      <!-- 휴대전화 통화: 터치 시 번호 조합 후 연결 -->
+      <a id="callBtn" class="btn btn-call" href="#" onclick="handleCallClick(event)">
         <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         <span id="callLabel">휴대전화 통화</span>
       </a>
@@ -299,13 +330,33 @@
   </div>
 
   <script>
+    let currentLang = 'ko';
+    let isMobileUnmasked = false;
+
+    /* 수집 봇 방지를 위해 휴대전화 번호를 조각화하여 보관 */
+    const mobileParts = {
+      p1: '010',
+      p2: '9089',
+      p3: '0198',
+      country: '+82'
+    };
+
+    function getRealMobile(format) {
+      if (format === 'raw') {
+        return mobileParts.p1 + mobileParts.p2 + mobileParts.p3;
+      }
+      if (format === 'en') {
+        return mobileParts.country + '.' + '10' + '.' + mobileParts.p2 + '.' + mobileParts.p3;
+      }
+      return mobileParts.p1 + '.' + mobileParts.p2 + '.' + mobileParts.p3;
+    }
+
     const profileData = {
       ko: {
         name: "맹 영 재",
         affiliation: "삼성증권 리서치SA팀",
         title: "수석",
-        mobile: "010.9089.0198",
-        mobileRaw: "01090890198",
+        maskedMobile: "010.••••.0198",
         office: "02.2020.7055",
         officeRaw: "0220207055",
         email: "akmaya@samsung.com",
@@ -314,14 +365,14 @@
         emailText: "이메일 작성",
         profileText: "프로필 소개 보기",
         downloadText: "국문 명함 저장",
-        downloadFile: "name_card_korean.jpg"
+        downloadFile: "name_card_korean.jpg",
+        revealText: "보기"
       },
       en: {
         name: "MAENG YOUNGJAE",
         affiliation: "Samsung Securities",
         title: "Supervisory Analyst / Research SA Team",
-        mobile: "+82.10.9089.0198",
-        mobileRaw: "+821090890198",
+        maskedMobile: "+82.10.••••.0198",
         office: "+82.2.2020.7055",
         officeRaw: "+82220207055",
         email: "akmaya@samsung.com",
@@ -330,11 +381,35 @@
         emailText: "Send Email",
         profileText: "View Profile",
         downloadText: "Save Card Image",
-        downloadFile: "name_card_english.jpg"
+        downloadFile: "name_card_english.jpg",
+        revealText: "Show"
       }
     };
 
+    /* 휴대전화 번호 잠금 해제 및 표시 함수 */
+    function revealMobile() {
+      isMobileUnmasked = true;
+      const phoneElem = document.getElementById('phoneMobile');
+      const revealBtn = document.getElementById('revealBtn');
+      const realNum = currentLang === 'ko' ? getRealMobile('ko') : getRealMobile('en');
+
+      phoneElem.innerHTML = '<a href="tel:' + getRealMobile('raw') + '" style="color:#0284c7; text-decoration:none;">' + realNum + '</a>';
+      revealBtn.style.display = 'none';
+
+      document.getElementById('callBtn').href = 'tel:' + getRealMobile('raw');
+    }
+
+    /* 통화 버튼 클릭 시 즉시 번호 해제 후 통화 연결 */
+    function handleCallClick(event) {
+      if (!isMobileUnmasked) {
+        revealMobile();
+      }
+      window.location.href = 'tel:' + getRealMobile('raw');
+      event.preventDefault();
+    }
+
     function setCard(lang) {
+      currentLang = lang;
       const flipper = document.getElementById('cardFlipper');
       const btnKo = document.getElementById('btnKo');
       const btnEn = document.getElementById('btnEn');
@@ -353,10 +428,19 @@
       document.getElementById('personName').textContent = data.name;
       document.getElementById('personAffiliation').textContent = data.affiliation;
       document.getElementById('personTitle').textContent = data.title;
-      
-      const mobileElem = document.getElementById('phoneMobile');
-      mobileElem.textContent = data.mobile;
-      mobileElem.href = 'tel:' + data.mobileRaw;
+
+      const phoneElem = document.getElementById('phoneMobile');
+      const revealBtn = document.getElementById('revealBtn');
+
+      if (isMobileUnmasked) {
+        const realNum = lang === 'ko' ? getRealMobile('ko') : getRealMobile('en');
+        phoneElem.innerHTML = '<a href="tel:' + getRealMobile('raw') + '" style="color:#0284c7; text-decoration:none;">' + realNum + '</a>';
+        revealBtn.style.display = 'none';
+      } else {
+        phoneElem.textContent = data.maskedMobile;
+        revealBtn.textContent = data.revealText;
+        revealBtn.style.display = 'inline-block';
+      }
 
       const officeElem = document.getElementById('phoneOffice');
       officeElem.textContent = data.office;
@@ -367,13 +451,8 @@
       emailElem.href = 'mailto:' + data.email;
 
       document.getElementById('addressText').textContent = data.address;
-
-      document.getElementById('callBtn').href = 'tel:' + data.mobileRaw;
       document.getElementById('callLabel').textContent = data.callText;
-
-      document.getElementById('emailBtn').href = 'mailto:' + data.email;
       document.getElementById('emailLabel').textContent = data.emailText;
-
       document.getElementById('profileLabel').textContent = data.profileText;
 
       const downloadBtn = document.getElementById('downloadBtn');
