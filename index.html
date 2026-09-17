@@ -84,24 +84,26 @@
       text-align: left;
       margin-bottom: 18px;
     }
-    /* 이름과 로고를 나란히 정렬 */
     .name-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .info-name {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
       color: #0f172a;
       letter-spacing: -0.3px;
     }
+    /* 로고 크기 확대 및 흰 배경 100% 투명 처리 */
     .name-logo {
-      height: 28px;
+      height: 38px;
       width: auto;
       object-fit: contain;
+      mix-blend-mode: multiply;
+      display: block;
     }
     .info-affiliation {
       font-size: 14px;
@@ -217,7 +219,7 @@
         <a id="emailText" class="info-value" href="mailto:akmaya@samsung.com">akmaya@samsung.com</a>
       </div>
       <div class="address-box" id="addressText">
-        06620 서울특별시 서초구 서초대로 74길 11 (서초동, 삼성전자빌딩) 10층
+        서울특별시 서초구 서초대로 74길 11 (서초동, 삼성전자빌딩) 10층
       </div>
     </div>
 
